@@ -1,11 +1,198 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+
+:root {
+    --prim-clr: hsl(224, 63%, 33%);
+    --sec-clr: hsl(282, 96%, 27%);
+
+    --prim-bg: hsl(0, 0%, 100%);
+    --sec-bg: hsl(0, 0%, 78%);
+    --other-bg: hsl(240, 11%, 9%);
 }
 
-body{
-    background-color: purple;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background-color: var(--prim-bg);
     width: 100%;
-    height: 100vh;
-    height: 100dvh;
+    font-family: "Roboto Slab", serif;
+}
+
+::-webkit-scrollbar {
+    width: .8rem;
+}
+
+::-webkit-scrollbar-thumb {
+    --_thumb-clr: var(--thumb-clr, var(--other-bg));
+    background-color: var(--_thumb-clr);
+    cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
+::-webkit-scrollbar-track {
+    background-color: inherit;
+}
+
+button {
+    --_button-clr: var(--button-clr, var(--other-bg));
+    /*  */
+    width: fit-content;
+    height: fit-content;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--_button-clr);
+    border-radius: 8px;
+    color: var(--_button-clr);
+    background-color: inherit;
+    cursor: pointer;
+}
+
+svg {
+    --_icon-clr: var(--icon-clr, var(--other-bg));
+    /*  */
+    width: 24px;
+    height: 24px;
+    fill: var(--_icon-clr)
+}
+
+#header {
+    background-color: var(--prim-clr);
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    place-items: center;
+    width: 100%;
+    height: 15dvh;
+    color: var(--prim-bg);
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#hamburger-btn {
+    border: none;
+}
+
+#hamburger-btn svg {
+    --icon-clr: var(--prim-bg);
+    /*  */
+    width: 42px;
+    height: inherit;
+    transition: scale 0.2s ease;
+}
+
+#hamburger-btn svg:active {
+    scale: 0.94;
+}
+
+#header h1 {
+    font-size: 3rem;
+}
+
+#header div {
+    display: grid;
+    place-items: center;
+    grid-auto-flow: column;
+    gap: 0.6rem;
+}
+
+#header div svg {
+    --icon-clr: var(--prim-bg);
+    width: 62px;
+    height: inherit;
+}
+
+#main-section {
+    --side-bar-width: 20vw;
+    /*  */
+    background-color: var(--prim-bg);
+    width: 100%;
+    margin-top: 15dvh;
+}
+
+#main-section>* {
+    height: 85dvh;
+}
+
+#sidebar {
+    position: fixed;
+    width: var(--side-bar-width);
+    background-color: var(--sec-bg);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 1rem 2%;
+    color: var(--other-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.show {
+    transform: translateX(0);
+}
+
+
+#content {
+    position: fixed;
+    width: 100vw;
+    background-color: var(--prim-bg);
+    padding: 1rem 4%;
+    overflow: auto;
+
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+#sidebar.show+#content {
+    width: calc(100vw - var(--side-bar-width));
+    margin-left: var(--side-bar-width);
+}
+
+/* #content::-webkit-scrollbar-thumb{
+    --thumb-clr:var(--sec-bg);
+} */
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4% 0;
+}
+
+#theme-group {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#projects-group {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#projects-group::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.nav-group:not(:last-child) {
+    border-bottom: 1px solid var(--other-bg);
+}
+
+.nav-group:last-child {
+    margin-top: auto;
+}
+
+.nav-group ul {
+    padding: 0 4%;
+}
+
+.nav-group ul li {
+    padding: 4px 0;
 }
