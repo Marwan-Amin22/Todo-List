@@ -12,7 +12,8 @@ export default class Project {
         this.name = newName;
     }
 
-    addTaskToProject(newTask) {
+    createTaskForProject(title, description = "optional", dueDate, priority) {
+        const newTask = new Task(undefined, title, description, dueDate, priority, undefined)
         this.tasks.push(newTask);
     }
 

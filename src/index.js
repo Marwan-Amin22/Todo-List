@@ -1,5 +1,8 @@
 import './styles.css';
+import buildSidebar from './components/navbar';
 
+
+// buildSidebar();
 
 const sideBarButton = document.querySelector("#hamburger-btn");
 const sideBar = document.querySelector("#sidebar");
@@ -22,19 +25,24 @@ sideBar.addEventListener('click', (e) => {
         oldSelectedBtn?.classList.toggle("selected-link");
         clickedLink.classList.toggle("selected-link");
 
-        if(clickedLink === allTasksBtn){
+        if (clickedLink === allTasksBtn) {
             //load all tasks
             // have 1 function for load and give all project array
         }
-        else if(clickedLink === dueTasksBtn){
+        else if (clickedLink === dueTasksBtn) {
             //have a function in project that returns tasks with less than a week , a day , and expired 
         }
-        else if(clickedLink === inboxBtn){
+        else if (clickedLink === inboxBtn) {
             //get all tasks from projectArray[0] which will be for inbox tasks 
         }
-        else{
+        else {
             //maybe do the dataset.id to compare all project with the clicked one 
-            
+
         }
     }
 })
+
+
+
+
+

@@ -46,16 +46,18 @@ body {
 
 button {
     --_button-clr: var(--button-clr, var(--other-bg));
+    --_button-bg: var(--button-bg, transparent);
     /*  */
     width: fit-content;
     height: fit-content;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--_button-clr);
-    border-radius: 8px;
+    padding: 0.2rem 0.7rem;
+    border: 2px solid var(--_button-clr);
+    border-radius: 12px;
     color: var(--_button-clr);
-    background-color: inherit;
+    background-color: var(--_button-bg);
     cursor: pointer;
 }
+
 
 svg {
     --_icon-clr: var(--icon-clr, var(--other-bg));
@@ -81,6 +83,7 @@ svg {
 
 #hamburger-btn {
     border: none;
+    --button-bg: transparent;
 }
 
 #hamburger-btn svg {
@@ -130,7 +133,7 @@ svg {
     background-color: var(--sec-bg);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    padding: 1rem 2%;
+    padding: 1rem 1%;
     color: var(--other-bg);
     display: flex;
     flex-direction: column;
@@ -185,7 +188,7 @@ svg {
     border-bottom: 1px solid var(--other-bg);
 }
 
-.nav-group:last-child {
+#theme-group {
     margin-top: auto;
 }
 
@@ -197,17 +200,43 @@ svg {
     padding: 4px 0;
 }
 
-.nav-link{
+.nav-link {
     cursor: pointer;
     transition: translate 0.3s ease;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     translate: 6% 0;
     text-decoration: underline;
 }
 
-.selected-link{
+.selected-link {
     translate: 6% 0;
     text-decoration: underline;
+}
+
+#project-add-sort-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 0;
+}
+
+#add-project-btn {
+    --button-clr: var(--other-bg);
+    --button-bg: transparent;
+    /*  */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+#sorting-arrows>* {
+    --icon-clr:var(--other-bg);
+    border: 0;
+    padding: 0;
+}
+
+#sorting-arrows>*:hover{
+    --icon-clr:red;
 }
