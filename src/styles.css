@@ -141,7 +141,7 @@ svg {
 }
 
 
-#content {
+#content-body {
     position: fixed;
     width: 100vw;
     background-color: var(--prim-bg);
@@ -151,7 +151,7 @@ svg {
     transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
-#sidebar.show+#content {
+#sidebar.show+#content-body {
     width: calc(100vw - var(--side-bar-width));
     margin-left: var(--side-bar-width);
 }
@@ -195,4 +195,19 @@ svg {
 
 .nav-group ul li {
     padding: 4px 0;
+}
+
+.nav-link{
+    cursor: pointer;
+    transition: translate 0.3s ease;
+}
+
+.nav-link:hover{
+    translate: 6% 0;
+    text-decoration: underline;
+}
+
+.selected-link{
+    translate: 6% 0;
+    text-decoration: underline;
 }
