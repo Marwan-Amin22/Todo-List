@@ -1,18 +1,23 @@
-import todoList from "../data/todoList";
+import myTodoList from "../data/todoList";
+import './sidebar.css';
 
-const myTodoList = new todoList();
 
 export default function buildSidebar() {
+
     const sidebar = document.querySelector("#sidebar");
     sidebar.innerHTML = "";
-    const home = buildHomeSection();
+
+    const home = buildHomeSection(myTodoList.allTodos[0]);
+    const projects = buildProjectsSection(myTodoList);
+
     sidebar.appendChild(home);
 }
 
-function buildHomeSection(){
+function buildHomeSection(inbox) {
 
     const home = document.createElement('div');
     home.setAttribute("class", "nav-group");
+    home.setAttribute("id", "home-group");
 
     const homeHeader = document.createElement('h2');
     homeHeader.innerText = "Home";
@@ -35,7 +40,7 @@ function buildHomeSection(){
     inboxLi.setAttribute("class", "nav-link");
     inboxLi.innerHTML = "<h3>Inbox</h3>";
 
-    inboxLi.dataset.id = myTodoList.allTodos[0].id;
+    inboxLi.dataset.id = inbox.id;
 
     ul.append(allTasksLi, dueTasksLi, inboxLi);
     home.appendChild(ul);
@@ -43,6 +48,6 @@ function buildHomeSection(){
     return home;
 }
 
-function buildProjectsSection(){
+function buildProjectsSection(projects) {
     
 }

@@ -9,7 +9,7 @@
 
 <body>
     <header id="header">
-        <button id="hamburger-btn">
+        <button id="hamburger-btn" class="icon-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
                 <path
                     d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z">
@@ -25,9 +25,10 @@
             </svg>
         </div>
     </header>
+
     <section id="main-section">
         <div id="sidebar" class="show">
-            <div class="nav-group">
+            <div id="home-group" class="nav-group">
                 <h2>Home</h2>
                 <ul>
                     <li id="all-tasks" class="nav-link selected-link">
@@ -43,9 +44,23 @@
             </div>
 
             <div id="projects-group" class="nav-group">
+                <dialog id="dialog-add-project">
+
+                    <form id="project-form">
+                        <div>
+                            <textarea id="project-name" name="project-name" placeholder="Name..."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" id="project-add-btn" class="text-button">Add</button>
+                            <button type="button" id="project-cancel-btn" class="text-button">Cancel</button>
+                        </div>
+                    </form>
+                </dialog>
+
                 <h2>Projects</h2>
+
                 <div id="project-add-sort-div">
-                    <button id="add-project-btn">
+                    <button id="project-modal-btn" class="text-button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
                             viewBox="0 0 256 256">
                             <path
@@ -56,7 +71,7 @@
                     </button>
 
                     <div id="sorting-arrows">
-                        <button id="up-arrow-projects">
+                        <button id="up-arrow-projects" class="icon-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
                                 viewBox="0 0 256 256">
                                 <path
@@ -64,7 +79,7 @@
                                 </path>
                             </svg>
                         </button>
-                        <button id="down-arrow-projects">
+                        <button id="down-arrow-projects" class="icon-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
                                 viewBox="0 0 256 256">
                                 <path
@@ -74,10 +89,19 @@
                         </button>
                     </div>
                 </div>
+
+                <ul id="projects-list">
+                    <li class="nav-link">
+                        <h3>All Tasks</h3>
+                        <div class="unchecked-tasks-count">1</div>
+                    </li>
+                </ul>
+
             </div>
+
             <div id="theme-group" class="nav-group">
                 <h2>Theme</h2>
-                <button>temp</button>
+                <button class="text-button">temp</button>
             </div>
 
         </div>

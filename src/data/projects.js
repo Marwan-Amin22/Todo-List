@@ -5,7 +5,10 @@ export default class Project {
     constructor(id = crypto.randomUUID(), name = "name", tasks = []) {
         this.#_id = id;
         this.name = name;
-        this.hydrateTasks(tasks)
+
+        this.tasks = tasks.map((item) => {
+            return new Task(item.id, item.title, item.description, item.dueDate, item.priority);
+        })
     }
 
     editName(newName) {
@@ -23,12 +26,6 @@ export default class Project {
         if (taskToEdit) {
             taskToEdit[0].editTask;
         }
-    }
-
-    hydrateTasks(tasks) {
-        this.tasks = tasks.map((item) => {
-            return new Task(item.id, item.title, item.description, item.dueDate, item.priority);
-        })
     }
 
     get id() {

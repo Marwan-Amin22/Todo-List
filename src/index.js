@@ -1,5 +1,6 @@
 import './styles.css';
 import buildSidebar from './components/sidebar';
+import myTodoList from './data/todoList';
 
 
 // buildSidebar();
@@ -13,36 +14,71 @@ sideBarButton.addEventListener('click', () => {
 
 sideBar.addEventListener('click', (e) => {
     const clickedLink = e.target.closest('.nav-link');
-    const allTasksBtn = document.querySelector("#all-tasks");
-    const dueTasksBtn = e.target.closest('#due-tasks');
-    const inboxBtn = document.querySelector("#inbox");
-
-
-    const projectsArray = [];
 
     if (clickedLink) {
-        const oldSelectedBtn = document.querySelector(".selected-link");
-        oldSelectedBtn?.classList.toggle("selected-link");
+        const oldSelectedLink = document.querySelector(".selected-link");
+        oldSelectedLink?.classList.toggle("selected-link");
+        
         clickedLink.classList.toggle("selected-link");
-
-        if (clickedLink === allTasksBtn) {
-            //load all tasks
-            // have 1 function for load and give all project array
-        }
-        else if (clickedLink === dueTasksBtn) {
-            //have a function in project that returns tasks with less than a week , a day , and expired 
-        }
-        else if (clickedLink === inboxBtn) {
-            //get all tasks from projectArray[0] which will be for inbox tasks 
-        }
-        else {
-            //maybe do the dataset.id to compare all project with the clicked one 
-
-        }
     }
 })
 
+const openProjectModal = document.querySelector("#project-modal-btn");
+const projectForm = document.querySelector("#project-form");
+const projectNameInput = document.querySelector("#project-name");
+const cancelProject = document.querySelector("#project-cancel-btn");
+const addProjectBtn = document.querySelector("#project-add-btn");
+const dialog = document.querySelector("#dialog-add-project");
+const projectsUl = document.querySelector("#projects-list");
+
+function addProject(name) {
+    myTodoList.createNewProject(name);
+}
+projectForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const projectName = formData.get("project-name");
+    projectNameInput.value = "";
+
+    addProject(projectName);
+    dialog.close();
+})
+openProjectModal.addEventListener('click', () => {
+    dialog.showModal();
+})
 
 
+projectNameInput.addEventListener('click', () => {
+    if (projectNameInput.classList.contains("error-placeholder")) {
+        projectNameInput.placeholder = "Name...";
+        projectNameInput.classList.toggle("error-placeholder");
+    }
+})
+cancelProject.addEventListener('click', () => {
+    projectNameInput.value = "";
+    if (projectNameInput.classList.contains("error-placeholder")) {
+        projectNameInput.placeholder = "Name...";
+        projectNameInput.classList.toggle("error-placeholder");
+    }
+
+
+    dialog.close();
+})
+
+addProjectBtn.addEventListener('click', () => {
+
+    if (projectNameInput.value == "") {
+        projectNameInput.placeholder = "Name is Required...";
+        projectNameInput.classList.toggle("error-placeholder");
+
+    }
+    else if (projectNameInput.value.length > 25) {
+        projectNameInput.value = "";
+        projectNameInput.placeholder = "Name Length Can't Exceed 25 Characters...";
+        projectNameInput.classList.toggle("error-placeholder");
+    }
+
+})
 
 

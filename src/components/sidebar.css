@@ -1,0 +1,210 @@
+#sidebar {
+    position: fixed;
+    width: var(--side-bar-width);
+    background-color: var(--sec-bg);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 1rem 1%;
+    color: var(--other-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.show {
+    transform: translateX(0);
+}
+
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4% 0;
+}
+
+#theme-group {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#projects-group {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#projects-group::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.nav-group:not(:last-child) {
+    border-bottom: 1px solid var(--other-bg);
+}
+
+#theme-group {
+    margin-top: auto;
+}
+
+.nav-group ul {
+    padding: 0 4%;
+}
+
+.nav-link {
+    padding: 4px;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link>h3 {
+    transition: translate 0.4s ease;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.nav-link:hover>h3 {
+    translate: 1vw 0;
+}
+
+.nav-link.selected-link h3 {
+    translate: 1vw 0;
+    text-decoration: underline;
+}
+
+#project-add-sort-div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1vh 0;
+}
+
+#project-modal-btn {
+    --button-clr: var(--other-bg);
+    --icon-clr: var(--other-bg);
+    --button-bg: var(--sec-bg);
+    /*  */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+#project-modal-btn:hover {
+    --button-clr: var(--sec-bg);
+    --icon-clr: var(--sec-bg);
+    --button-bg: var(--other-bg);
+}
+
+#sorting-arrows svg {
+    --icon-clr: var(--other-bg);
+    /*  */
+}
+
+#sorting-arrows>*:hover {
+    --button-bg: var(--sec-bg-hover);
+}
+
+#dialog-add-project {
+    --dialog-bg: var(--sec-bg);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 20vw;
+    height: 20vh;
+    background-color: var(--dialog-bg);
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    color: var(--other-bg);
+}
+
+#dialog-add-project::backdrop {
+    background-color: rgb(0 0 0/0.6);
+}
+
+
+#project-form {
+    padding: 4%;
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+#project-form :focus {
+    outline: none;
+}
+
+#project-form>div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+#project-form>div:first-child {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--other-bg);
+}
+
+#project-name {
+    background-color: inherit;
+    border: none;
+    flex-grow: 1;
+    color: var(--other-bg);
+    font-size: 1rem;
+    resize: none;
+    padding: 4px 0;
+    font-weight: bold;
+}
+
+#project-name::-webkit-scrollbar {
+    width: 4px;
+}
+
+#project-name:focus {
+    border: none;
+    outline: none;
+}
+
+#project-name.error-placeholder::placeholder {
+    color: darkred;
+}
+
+#project-add-btn {
+    --button-clr: darkgreen;
+    --button-bg: var(--dialog-bg);
+}
+
+#project-add-btn:hover {
+    --button-clr: var(--dialog-bg);
+    --button-bg: darkgreen;
+}
+
+#project-cancel-btn {
+    --button-clr: darkred;
+    --button-bg: var(--dialog-bg);
+}
+
+#project-cancel-btn:hover {
+    --button-clr: var(--dialog-bg);
+    --button-bg: darkred;
+}
+
+.unchecked-tasks-count {
+    padding: 2px 8px;
+    border-radius: 50vw;
+    border: 1px solid black;
+    font-weight: bold;
+    color: var(--sec-bg);
+    background-color: var(--other-bg);
+    user-select: none;
+    display: grid;
+    place-items: center;
+    cursor:default;
+}
