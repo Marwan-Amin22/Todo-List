@@ -83,14 +83,35 @@ export function createProjectListItem(project) {
     li.appendChild(unchecked);
 
     li.innerHTML += `
-            <button class="icon-button edit-project-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"  viewBox="0 0 256 256">
-                    <path
-                        d="M112,60a16,16,0,1,1,16,16A16,16,0,0,1,112,60Zm16,52a16,16,0,1,0,16,16A16,16,0,0,0,128,112Zm0,68a16,16,0,1,0,16,16A16,16,0,0,0,128,180Z">
-                    </path>
-                </svg>
-            </button>
-            `;
+        <button class="icon-button three-dots-project-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"  viewBox="0 0 256 256">
+                <path
+                    d="M112,60a16,16,0,1,1,16,16A16,16,0,0,1,112,60Zm16,52a16,16,0,1,0,16,16A16,16,0,0,0,128,112Zm0,68a16,16,0,1,0,16,16A16,16,0,0,0,128,180Z">
+                </path>
+            </svg>
+        </button>
+        <dialog class="edit-project-dialog">
+            <div>
+                <button class="text-button delete-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                        <path 
+                            d="M216,48H180V36A28,28,0,0,0,152,8H104A28,28,0,0,0,76,36V48H40a12,12,0,0,0,0,24h4V208a20,20,0,0,0,20,20H192a20,20,0,0,0,20-20V72h4a12,12,0,0,0,0-24ZM100,36a4,4,0,0,1,4-4h48a4,4,0,0,1,4,4V48H100Zm88,168H68V72H188ZM116,104v64a12,12,0,0,1-24,0V104a12,12,0,0,1,24,0Zm48,0v64a12,12,0,0,1-24,0V104a12,12,0,0,1,24,0Z">
+                        </path>
+                    </svg>
+                    Delete
+                </button>
+                <button class="text-button edit-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                        <path 
+                            d="M232.49,55.51l-32-32a12,12,0,0,0-17,0l-96,96A12,12,0,0,0,84,128v32a12,12,0,0,0,12,12h32a12,12,0,0,0,8.49-3.51l96-96A12,12,0,0,0,232.49,55.51ZM192,49l15,15L196,75,181,60Zm-69,99H108V133l56-56,15,15Zm105-7.43V208a20,20,0,0,1-20,20H48a20,20,0,0,1-20-20V48A20,20,0,0,1,48,28h67.43a12,12,0,0,1,0,24H52V204H204V140.57a12,12,0,0,1,24,0Z">
+                        </path>
+                    </svg>
+                    Edit
+                </button>
+            </div>
+        </dialog>
+    `;
+
     li.dataset.id = project.id;
     return li;
 }

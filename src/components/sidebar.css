@@ -46,7 +46,7 @@
 }
 
 .nav-group ul {
-    padding-left:4%;
+    padding-left: 4%;
 }
 
 .nav-link {
@@ -82,6 +82,7 @@
     --button-clr: var(--other-bg);
     --icon-clr: var(--other-bg);
     --button-bg: var(--sec-bg);
+    --border-clr: var(--other-bg);
     /*  */
     display: flex;
     align-items: center;
@@ -99,17 +100,20 @@
     display: flex;
     gap: 4px;
 }
+
 #sorting-arrows svg {
     --icon-clr: var(--other-bg);
     /*  */
 }
 
-#sorting-arrows>*:hover {
+#sorting-arrows>*:hover,
+#up-arrow-projects.active,
+#down-arrow-projects.active {
     --button-bg: var(--sec-bg-hover);
 }
 
 #dialog-add-project {
-    --dialog-bg: var(--sec-bg);
+    --dialog-bg: var(--prim-bg);
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -183,6 +187,7 @@
 
 #project-add-btn {
     --button-clr: darkgreen;
+    --border-clr: darkgreen;
     --button-bg: var(--dialog-bg);
 }
 
@@ -193,6 +198,7 @@
 
 #project-cancel-btn {
     --button-clr: darkred;
+    --border-clr: darkred;
     --button-bg: var(--dialog-bg);
 }
 
@@ -215,7 +221,64 @@
     cursor: default;
 }
 
-.edit-project-btn:hover {
+.three-dots-project-btn:hover {
     --button-bg: var(--sec-bg-hover);
     --icon-clr: var(--other-bg);
+}
+
+#projects-group .nav-link {
+    position: relative;
+}
+
+#projects-group .nav-link dialog {
+    --_dialog: var(--prim-bg);
+
+    position: absolute;
+    margin-left: auto;
+
+    translate: -20% -65%;
+    border-radius: 20px 20px 0 20px;
+    border: 0;
+    overflow: hidden;
+}
+
+#projects-group .nav-link dialog div {
+    display: grid;
+    place-items: center;
+}
+
+#projects-group .nav-link dialog div>* {
+    /* padding: 1vh 0; */
+    width: 120%;
+    height: 105%;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+#projects-group .nav-link dialog div .edit-btn {
+    --icon-clr: darkblue;
+    --button-clr: darkblue;
+    --button-bg: var(--_dialog);
+}
+
+#projects-group .nav-link dialog div .edit-btn:hover {
+    --icon-clr: var(--_dialog);
+    --button-clr: var(--_dialog);
+    --button-bg: darkblue;
+}
+
+#projects-group .nav-link dialog div .delete-btn {
+    --icon-clr: darkred;
+    --button-clr: darkred;
+    --button-bg: var(--_dialog);
+}
+
+#projects-group .nav-link dialog div .delete-btn:hover {
+    --icon-clr: var(--_dialog);
+    --button-clr: var(--_dialog);
+    --button-bg: darkred;
 }

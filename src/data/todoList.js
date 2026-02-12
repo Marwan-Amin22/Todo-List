@@ -29,6 +29,14 @@ class todoList {
         this.save();
     }
 
+    deleteTaskForProject(projectId,taskId){
+
+    }
+
+    deleteProject(projectId){
+        
+    }
+
     save() {
         localStorage.setItem('allTodos', JSON.stringify(this.toJSON()));
     }
