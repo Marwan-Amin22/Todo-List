@@ -7,12 +7,12 @@ class todoList {
 
     constructor() {
         const allTodosObject = JSON.parse(localStorage.getItem('allTodos'));
-
-        const projects = allTodosObject.allTodos || [{ id: undefined, name: "inbox", tasks: undefined }];
-
+        const projects = allTodosObject?.allTodos || [{ id: undefined, name: "inbox", tasks: undefined }];
+        
         this.#allTodos = projects.map(item => {
             return new Project(item.id, item.name, item.tasks);
         })
+        this.save();
     }
 
     createNewProject(name) {

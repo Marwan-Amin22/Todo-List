@@ -95,6 +95,10 @@
     --button-bg: var(--other-bg);
 }
 
+#sorting-arrows {
+    display: flex;
+    gap: 4px;
+}
 #sorting-arrows svg {
     --icon-clr: var(--other-bg);
     /*  */
