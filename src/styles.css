@@ -22,7 +22,9 @@ ul {
     list-style: none;
 }
 
-
+li{
+    height: fit-content;
+}
 body {
     background-color: var(--prim-bg);
     width: 100%;

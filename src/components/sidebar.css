@@ -46,13 +46,14 @@
 }
 
 .nav-group ul {
-    padding: 0 4%;
+    padding-left:4%;
 }
 
 .nav-link {
     padding: 4px;
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    gap: 4px;
 }
 
 .nav-link>h3 {
@@ -61,11 +62,11 @@
     flex-grow: 1;
 }
 
-.nav-link:hover>h3 {
+.nav-link>h3:hover {
     translate: 1vw 0;
 }
 
-.nav-link.selected-link h3 {
+.nav-link h3.selected-link {
     translate: 1vw 0;
     text-decoration: underline;
 }
@@ -197,7 +198,8 @@
 }
 
 .unchecked-tasks-count {
-    padding: 2px 8px;
+    height: fit-content;
+    padding: 0.1vh 0.5vw;
     border-radius: 50vw;
     border: 1px solid black;
     font-weight: bold;
@@ -206,5 +208,10 @@
     user-select: none;
     display: grid;
     place-items: center;
-    cursor:default;
+    cursor: default;
+}
+
+.edit-project-btn:hover {
+    --button-bg: var(--sec-bg-hover);
+    --icon-clr: var(--other-bg);
 }

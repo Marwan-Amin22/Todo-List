@@ -13,12 +13,12 @@ sideBarButton.addEventListener('click', () => {
 })
 
 sideBar.addEventListener('click', (e) => {
-    const clickedLink = e.target.closest('.nav-link');
+    const clickedLink = e.target.closest('.nav-link>h3');
 
     if (clickedLink) {
         const oldSelectedLink = document.querySelector(".selected-link");
         oldSelectedLink?.classList.toggle("selected-link");
-        
+
         clickedLink.classList.toggle("selected-link");
     }
 })
