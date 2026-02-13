@@ -8,7 +8,7 @@ class todoList {
     constructor() {
         const allTodosObject = JSON.parse(localStorage.getItem('allTodos'));
         const projects = allTodosObject?.allTodos || [{ id: undefined, name: "inbox", tasks: undefined }];
-        
+
         this.#allTodos = projects.map(item => {
             return new Project(item.id, item.name, item.tasks);
         })
@@ -29,12 +29,36 @@ class todoList {
         this.save();
     }
 
-    deleteTaskForProject(projectId,taskId){
+    deleteTaskForProject(projectId, taskId) {
 
     }
 
-    deleteProject(projectId){
+    deleteProject(projectId) {
+        const indexToRemove = [...this.#allTodos].findIndex(project => {
+            return project.id === projectId;
+        });
+
+        if (indexToRemove == -1) {
+            return;
+        }
         
+        this.#allTodos.splice(indexToRemove, 1)
+        this.save();
+    }
+
+    editProjectName(projectId, newName) {
+
+        const indexToEdit = [...this.#allTodos].findIndex(project => {
+            return project.id === projectId;
+        });
+
+
+        if (indexToEdit == -1) {
+            return;
+        }
+
+        this.#allTodos[indexToEdit].editName(newName);
+        this.save();
     }
 
     save() {

@@ -80,7 +80,15 @@ export function setSidebarEventListeners() {
         e.preventDefault();
     })
 
-    openProjectModal.addEventListener('click', () => {
+    openProjectModal.addEventListener('click', (e) => {
+        if (dialog.classList.contains("edit"))
+            dialog.classList.toggle("edit");
+        if (!dialog.classList.contains("new"))
+            dialog.classList.toggle("new");
+        addProjectBtn.innerText = "";
+        addProjectBtn.innerText = "Add";
+        dialog.dataset.id = "";
+
         dialog.showModal();
     })
 
@@ -117,10 +125,22 @@ export function setSidebarEventListeners() {
             projectNameInput.classList.toggle("error-placeholder");
         }
         else {
-            addProject(projectNameInput.value);
-            projectNameInput.value = "";
+            if (dialog.classList.contains("new")) {
+                addProject(projectNameInput.value);
+                projectNameInput.value = "";
+                updateProjectToUl();
+            }
+            else if (dialog.classList.contains("edit")) {
+                const projectId = dialog.dataset.id;
+                myTodoList.editProjectName(projectId, projectNameInput.value);                              // this updates the array
+                const liToUpdate = [...projectsUl.children].find(item => item.dataset.id === projectId);        // looping the li array to get the one with matching id 
+
+                if (liToUpdate) {
+                    liToUpdate.getElementsByTagName("h3")[0].innerText = projectNameInput.value;
+                }
+            }
             dialog.close();
-            updateProjectToUl();
+
         }
     })
 
@@ -205,21 +225,65 @@ export function setSidebarEventListeners() {
 
         const projectsLiArray = [...projectsUl.children];
         const ProjectToEdit = projectsLiArray.filter(item => item.dataset.id === projectID)[0];
+        const smallDialog = ProjectToEdit.getElementsByTagName("dialog")[0];
 
-        const dialog = ProjectToEdit.getElementsByTagName("dialog")[0];
 
         projectsLiArray.forEach(item => {
-            if (item.getElementsByTagName("dialog")[0] === dialog) { }
+            if (item.getElementsByTagName("dialog")[0] === smallDialog) { }
             else if (item.getElementsByTagName("dialog")[0].open) {
                 item.getElementsByTagName("dialog")[0].close();
             }
         })
 
-        if (dialog.open) {
-            dialog.close();
+        if (smallDialog.open) {
+            smallDialog.close();
         }
         else {
-            dialog.show();
+            smallDialog.show();
         }
+
+        smallDialog.addEventListener('click', (e) => {
+            const clickedBtn = e.target.closest("button");
+
+            if (clickedBtn) {
+                smallDialog.close();
+                const projectListItem = clickedBtn.closest("li");
+                if (clickedBtn.classList.contains("edit-btn")) {
+                    editProject(projectListItem);
+                }
+                else if (clickedBtn.classList.contains("delete-btn")) {
+                    deleteProject(projectListItem);
+                }
+            }
+        }, { once: true })
+
+    }
+
+    function editProject(projectLi) {
+        const projectId = projectLi.dataset.id;
+        const projectName = projectLi.getElementsByTagName('h3')[0].innerText;
+
+        if (!dialog.classList.contains("edit"))
+            dialog.classList.toggle("edit");
+        if (dialog.classList.contains("new"))
+            dialog.classList.toggle("new");
+
+        addProjectBtn.innerText = "";
+        addProjectBtn.innerText = "Confirm";
+
+        dialog.showModal();
+        dialog.dataset.id = projectId;
+        projectNameInput.value = projectName;
+    }
+
+    function deleteProject(projectListItem) {
+
+        if (projectListItem.querySelector("h3").classList.contains("selected-link")) {
+            const allTasks = document.querySelector("#all-tasks > h3");
+            allTasks.classList.toggle("selected-link");
+        }
+        const projectId = projectListItem.dataset.id;
+        myTodoList.deleteProject(projectId);
+        projectListItem.remove();
     }
 }

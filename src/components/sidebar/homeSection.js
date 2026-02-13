@@ -13,7 +13,7 @@ export default function buildHomeSection(inbox) {
     const allTasksLi = document.createElement('li');
     allTasksLi.setAttribute("id", "all-tasks");
     allTasksLi.setAttribute("class", "nav-link");
-    allTasksLi.innerHTML = "<h3>All Tasks</h3>";
+    allTasksLi.innerHTML = "<h3 class='selected-link' >All Tasks</h3>";
     allTasksLi.click();
 
     const dueTasksLi = document.createElement('li');
