@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-@import url('./components/sidebar.css');
+@import url('./components/contentBody.css');
 
 :root {
     --prim-clr: hsl(224, 63%, 33%);
@@ -87,7 +87,7 @@ button:active {
     --_button-bg: var(--button-bg, transparent);
     /*  */
     border-radius: 12px;
-    padding: 0.1vh 0.01vw;
+    padding: 0.1vh 0.2vw;
     display: flex;
     align-items: center;
 }
@@ -166,20 +166,7 @@ svg {
 
 
 
-#content-body {
-    position: fixed;
-    width: 100vw;
-    background-color: var(--prim-bg);
-    padding: 1rem 4%;
-    overflow: auto;
 
-    transition: margin-left 0.3s ease, width 0.3s ease;
-}
-
-#sidebar.show+#content-body {
-    width: calc(100vw - var(--side-bar-width));
-    margin-left: var(--side-bar-width);
-}
 
 /* #content::-webkit-scrollbar-thumb{
     --thumb-clr:var(--sec-bg);

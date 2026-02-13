@@ -116,7 +116,48 @@
 
         </div>
         <div id="content-body">
-
+            <section id="utils-section">
+                <div id="search-tasks-div">
+                    <label for="search-tasks-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
+                            viewBox="0 0 256 256">
+                            <path
+                                d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input id="search-tasks-input" type="text" placeholder="Search Task Name...">
+                </div>
+                <button class="text-button" id="task-add-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                        <path
+                            d="M28,64A12,12,0,0,1,40,52H216a12,12,0,0,1,0,24H40A12,12,0,0,1,28,64Zm12,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Zm104,40H40a12,12,0,0,0,0,24H144a12,12,0,0,0,0-24Zm88,0H220V168a12,12,0,0,0-24,0v12H184a12,12,0,0,0,0,24h12v12a12,12,0,0,0,24,0V204h12a12,12,0,0,0,0-24Z">
+                        </path>
+                    </svg>
+                    Add Task
+                </button>
+                <div id="sorting-tasks-div">
+                    <div>
+                        <button id="up-arrow-tasks" class="icon-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
+                                viewBox="0 0 256 256">
+                                <path
+                                    d="M36,128a12,12,0,0,1,12-12h68a12,12,0,0,1,0,24H48A12,12,0,0,1,36,128ZM48,76h52a12,12,0,0,0,0-24H48a12,12,0,0,0,0,24ZM180,180H48a12,12,0,0,0,0,24H180a12,12,0,0,0,0-24ZM232.49,79.51l-40-40a12,12,0,0,0-17,0l-40,40a12,12,0,0,0,17,17L172,77v67a12,12,0,0,0,24,0V77l19.51,19.52a12,12,0,0,0,17-17Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button id="down-arrow-tasks" class="icon-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
+                                viewBox="0 0 256 256">
+                                <path
+                                    d="M128,128a12,12,0,0,1-12,12H48a12,12,0,0,1,0-24h68A12,12,0,0,1,128,128ZM48,76H180a12,12,0,0,0,0-24H48a12,12,0,0,0,0,24Zm52,104H48a12,12,0,0,0,0,24h52a12,12,0,0,0,0-24Zm132.49-20.49a12,12,0,0,0-17,0L196,179V112a12,12,0,0,0-24,0v67l-19.51-19.52a12,12,0,0,0-17,17l40,40a12,12,0,0,0,17,0l40-40A12,12,0,0,0,232.49,159.51Z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="text-button" id="sort-by-button">Sort By</button>
+                </div>
+            </section>
         </div>
     </section>
 </body>

@@ -68,7 +68,6 @@ export function setSidebarEventListeners() {
         if (clickedEditProject) {
             handelEditProject(clickedEditProject.parentElement.dataset.id);
         }
-
     })
 
 
